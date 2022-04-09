@@ -1,60 +1,70 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-:host{
+
+.ws-filler {
+    flex: 1 1 auto;
+}
+
+:host {
     height: inherit;
-    .ws-filler{
-        flex:1 1 auto;
-    }
-    
-    ::ng-deep {
-        .mat-card{
-            padding: 10px !important;
-            min-height: calc(50% - 35px);
-            max-height: inherit;
-            margin: 10px 0;
-        }
-        .mat-card-header{
-            height: 40px;
-            cursor: move;
-        }
-        .mat-card-header-text {
-            margin: 0 !important;
-            padding-top: 10px;
-            align-self: center;
-        }
-        .mat-card-actions{
-            align-items: center;
-        }
-        .mat-card-content{
-            padding:10px 0;
-        }
-    }
-    .container {
-        height: calc(100% - 5px);
-        overflow: hidden;
-    }
-    
-    .ws-container{
-        height: 100%;
-        border: 1px solid #ccc;
-        clear: both;
-    }
-    .col{
-        height: calc(100% - 20px);
-        width: calc(50% - 20px);
-        margin:10px
-    }
-    .fleft{
-       float:left
-    }
-    .clear{
-        clear:both;
+}
+
+::ng-deep {
+    .mat-card {
+        padding: 10px !important;
+        min-height: calc(50% - 35px);
+        max-height: inherit;
+        margin: 10px 0;
     }
 
+    .mat-card-header {
+        height: 40px;
+        cursor: move;
+    }
+
+    .mat-card-header-text {
+        margin: 0 !important;
+        padding-top: 10px;
+        align-self: center;
+    }
+
+    .mat-card-actions {
+        align-items: center;
+    }
+
+    .mat-card-content {
+        padding: 10px 0;
+    }
 }
+
+.container {
+    height: calc(100% - 5px);
+    overflow: hidden;
+}
+
+.ws-container {
+    height: 100%;
+    border: 1px solid #ccc;
+    clear: both;
+}
+
+.col {
+    height: calc(100% - 20px);
+    width: calc(50% - 20px);
+    margin: 10px
+}
+
+.fleft {
+    float: left
+}
+
+.clear {
+    clear: both;
+}
+
 .cdk-drag-placeholder {
     opacity: 0;
-  }
-  
-  .cdk-drag-animating {
+}
+
+.cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
+}

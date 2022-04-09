@@ -21,7 +21,6 @@ export class DynamicComponent implements OnInit {
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent<any>(this.cardModel.component);
     if (this.cardModel.prop) {
-      debugger;
       Object.assign(componentRef.instance, this.cardModel.prop);
     }
   }
