@@ -1,0 +1,40 @@
+<div class="container" cdkDropListGroup>
+    <div class="ws-container" cdkDropList [cdkDropListData]="rowCardsLeft" (cdkDropListDropped)="drop($event)"
+        class="fleft col" *ngIf="rowCardsLeft.length>0"
+        [style.width]="rowCardsRight.length>0?'calc(50% - 20px)':'calc(100% - 20px)'">
+        <mat-card *ngFor="let card of rowCardsLeft" [id]="card.id" cdkDragBoundary=".container"
+            [style.height]="rowCardsLeft.length>1?'calc(50% - 35px)':'calc(100% - 35px)'" cdkDrag>
+            <mat-card-header cdkDragHandle>
+                <mat-card-title [innerText]="card.title"></mat-card-title>
+                <div class="ws-filler"></div>
+                <mat-card-actions align="end">
+                    <button mat-icon-button aria-label="close" (click)="onClose($event,card)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card-header>
+            <mat-card-content>
+                    <ws-dynamic [cardModel]="card.component"></ws-dynamic>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="ws-container" cdkDropList [cdkDropListData]="rowCardsRight" (cdkDropListDropped)="drop($event)"
+        class="fleft col" *ngIf="rowCardsRight.length>0"
+        [style.width]="rowCardsLeft.length>0?'calc(50% - 20px)':'calc(100% - 20px)'">
+        <mat-card *ngFor="let card of rowCardsRight" [id]="card.id" cdkDragBoundary=".container"
+            [style.height]="rowCardsRight.length>1?'calc(50% - 35px)':'calc(100% - 35px)'" cdkDrag>
+            <mat-card-header cdkDragHandle>
+                <mat-card-title [innerText]="card.title"></mat-card-title>
+                <div class="ws-filler"></div>
+                <mat-card-actions align="end">
+                    <button mat-icon-button aria-label="close" (click)="onClose($event,card)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card-header>
+            <mat-card-content>
+                <ws-dynamic [cardModel]="card.component"></ws-dynamic>
+        </mat-card-content>
+        </mat-card>
+    </div>
+</div>
