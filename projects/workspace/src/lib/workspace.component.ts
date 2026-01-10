@@ -1,21 +1,33 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { Card } from './card.model';
 
 @Component({
   selector: 'ws-card',
   templateUrl: './workspace.component.html',
-  styleUrls: ['./workspace.component.scss']
+  styleUrls: ['./workspace.component.scss'],
 })
 export class WorkspaceComponent implements OnInit {
   @Input() cards: Card[];
   @Output() onCloseEvent: EventEmitter<any> = new EventEmitter<any>();
-  public rowCardsLeft: Card[]
-  public rowCardsRight: Card[]
+  public rowCardsLeft: Card[];
+  public rowCardsRight: Card[];
   constructor() {
     this.rowCardsLeft = [];
     this.rowCardsRight = [];
-    
   }
 
   ngOnInit(): void {
@@ -38,8 +50,8 @@ export class WorkspaceComponent implements OnInit {
   onClose($event: any, card: Card) {
     const payload = {
       $event: $event,
-      card: card
-    }
+      card: card,
+    };
     if (this.cards.length > 1) {
       let index = this.rowCardsLeft.findIndex((item) => {
         return item.id === card.id;
@@ -59,23 +71,51 @@ export class WorkspaceComponent implements OnInit {
     this.onCloseEvent.emit(payload);
   }
 
+  toggleFullScreen($event: any, card: Card) {
+    const elem = document.getElementById(card.id);
+    const cards = document.querySelectorAll('.ws-card');
+    if (elem && !card.fullScreen) {
+      elem?.classList.add('expand');
+      cards.forEach((el) => {
+        const element = el as HTMLElement;
+        if (card.id != element.id) {
+          // We cast to HTMLElement to access classList safely
+          el.classList.add('ws-hide');
+        }
+      });
+    } else if (card.fullScreen) {
+      elem?.classList.remove('expand');
+      cards.forEach((el) => {
+        const element = el as HTMLElement;
+        if (card.id != element.id) {
+          // We cast to HTMLElement to access classList safely
+          el.classList.remove('ws-hide');
+        }
+      });
+    }
+    card.fullScreen = !card.fullScreen;
+  }
+
   drop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex,
+        event.currentIndex
       );
       transferArrayItem(
         event.container.data,
         event.previousContainer.data,
         event.currentIndex + 1,
-        event.previousIndex,
+        event.previousIndex
       );
     }
   }
-
 }

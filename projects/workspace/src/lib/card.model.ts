@@ -4,5 +4,6 @@ export interface Card{
      id:string;
      title:string;
      component:ComponentModel;
+     fullScreen?:boolean;
      onClose?:any;
 }

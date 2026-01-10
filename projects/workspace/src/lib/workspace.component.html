@@ -2,13 +2,19 @@
     <div class="ws-container" cdkDropList [cdkDropListData]="rowCardsLeft" (cdkDropListDropped)="drop($event)"
         class="fleft col" *ngIf="rowCardsLeft.length>0"
         [style.width]="rowCardsRight.length>0?'calc(50% - 20px)':'calc(100% - 20px)'">
-        <mat-card *ngFor="let card of rowCardsLeft" [id]="card.id" cdkDragBoundary=".container"
+        <mat-card *ngFor="let card of rowCardsLeft" [id]="card.id" cdkDragBoundary=".container" class="ws-card"
             [style.height]="rowCardsLeft.length>1?'calc(50% - 35px)':'calc(100% - 35px)'" cdkDrag>
             <mat-card-header cdkDragHandle>
                 <mat-card-title [innerText]="card.title"></mat-card-title>
                 <div class="ws-filler"></div>
                 <mat-card-actions align="end">
-                    <button mat-icon-button aria-label="close" (click)="onClose($event,card)">
+                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand" *ngIf="!card.fullScreen">
+                        <mat-icon>open_in_full</mat-icon>
+                    </button>
+                     <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand" *ngIf="card.fullScreen">
+                        <mat-icon>minimize</mat-icon>
+                    </button>
+                    <button mat-icon-button aria-label="close" (click)="onClose($event,card)" title="Close">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-card-actions>

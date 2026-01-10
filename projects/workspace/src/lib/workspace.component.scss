@@ -68,3 +68,14 @@
 .cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.ws-hide{
+    display: none;
+}
+.expand{
+    height: calc(100vh - 60px) !important;
+    position: absolute;
+    z-index: 99999;
+    overflow: hidden;
+    width: 98%;
+}
