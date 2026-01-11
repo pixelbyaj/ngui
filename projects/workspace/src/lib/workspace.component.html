@@ -8,10 +8,12 @@
                 <mat-card-title [innerText]="card.title"></mat-card-title>
                 <div class="ws-filler"></div>
                 <mat-card-actions align="end">
-                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand" *ngIf="!card.fullScreen">
+                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand"
+                        *ngIf="!card.fullScreen">
                         <mat-icon>open_in_full</mat-icon>
                     </button>
-                     <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand" *ngIf="card.fullScreen">
+                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand"
+                        *ngIf="card.fullScreen">
                         <mat-icon>minimize</mat-icon>
                     </button>
                     <button mat-icon-button aria-label="close" (click)="onClose($event,card)" title="Close">
@@ -20,7 +22,7 @@
                 </mat-card-actions>
             </mat-card-header>
             <mat-card-content>
-                    <ws-dynamic [cardModel]="card.component"></ws-dynamic>
+                <ws-dynamic [cardModel]="card.component"></ws-dynamic>
             </mat-card-content>
         </mat-card>
     </div>
@@ -33,6 +35,14 @@
                 <mat-card-title [innerText]="card.title"></mat-card-title>
                 <div class="ws-filler"></div>
                 <mat-card-actions align="end">
+                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand"
+                        *ngIf="!card.fullScreen">
+                        <mat-icon>open_in_full</mat-icon>
+                    </button>
+                    <button mat-icon-button aria-label="close" (click)="toggleFullScreen($event,card)" title="Expand"
+                        *ngIf="card.fullScreen">
+                        <mat-icon>minimize</mat-icon>
+                    </button>
                     <button mat-icon-button aria-label="close" (click)="onClose($event,card)">
                         <mat-icon>close</mat-icon>
                     </button>
@@ -40,7 +50,7 @@
             </mat-card-header>
             <mat-card-content>
                 <ws-dynamic [cardModel]="card.component"></ws-dynamic>
-        </mat-card-content>
+            </mat-card-content>
         </mat-card>
     </div>
 </div>
